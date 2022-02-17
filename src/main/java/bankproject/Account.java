@@ -28,7 +28,7 @@ public class Account {
 
 
     public String showBalance() {
-        return "Stan konta wynosi " + balance + currency;
+        return "Stan konta wynosi =" + balance + currency;
     }
 
 }
