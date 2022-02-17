@@ -11,14 +11,27 @@ public class Client {
 
     public Client(int clientId, List<Account> accountList) {
         this.clientId = clientId;
-        this.accountList = accountList
+        this.accountList = accountList;
     }
 
-    public Account openAccount(int clientId, Account account) {
-        return new Account();
+    public List<Account> openAccount(int clientId, String firstName, String lastName) {
+        Account account = new Account();
+        accountList.add(account);
+        return accountList;
     }
 
     public void deleteAccount(Account account) {
+        accountList.remove(account);
+    }
+
+    public void payIntoAccount(Account account, int amount) {
 
     }
+
+    public void withdraw(Account account, int amount) {
+        if (account.getBalance() > amount) {
+            account.setBalance(getBalance() - amount);
+        }
+    }
+
 }
