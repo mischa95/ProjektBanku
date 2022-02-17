@@ -9,6 +9,9 @@ public class Client {
     private String lastName;
     private List<Account> accountList;
 
+    public Client(){
+    }
+
     public Client(int clientId, List<Account> accountList) {
         this.clientId = clientId;
         this.accountList = accountList;
@@ -40,4 +43,15 @@ public class Client {
         }
     }
 
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 }
