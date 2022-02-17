@@ -29,9 +29,9 @@ public class Client {
     }
 
     public void withdraw(Account account, int amount) {
-        if (account.getBalance() > amount) {
-            account.setBalance(getBalance() - amount);
-        }
+        //if (account.getBalance() > amount) {
+          //  account.setBalance(getBalance() - amount);
+        //}
     }
 
 }
