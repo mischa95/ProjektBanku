@@ -24,14 +24,20 @@ public class Client {
         accountList.remove(account);
     }
 
-    public void payIntoAccount(Account account, int amount) {
-
+    public void payIntoAccount(Account account, double amount) {
+        if(amount>0)
+            account.setBalance(account.getBalance()+amount);
+        else{
+            System.out.println("Nie możesz wpłacić ujemnej kwoty !!!");
+        }
     }
 
-    public void withdraw(Account account, int amount) {
-        //if (account.getBalance() > amount) {
-          //  account.setBalance(getBalance() - amount);
-        //}
+    public void withdraw(Account account, double amount) {
+        if((account.getBalance()-amount) >= 0)
+            account.setBalance(account.getBalance()-amount);
+        else{
+            System.out.println("Nie masz tyle środków na koncie !!!");
+        }
     }
 
 }
