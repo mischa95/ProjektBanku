@@ -2,19 +2,16 @@ package bankproject;
 
 
 public class Account {
-    private String nameAccount;
+    private String accountName;
     private String currency;
     private double balance;
-    private String accountName;
 
 
-    public Account(String nameAccount, String currency, double balance) {
+    public Account(String accountName, String currency, double balance) {
         this.currency = currency;
         this.balance = balance;
-        this.nameAccount=nameAccount;
-
+        this.accountName = accountName;
     }
-
 
     public double getBalance(){
         return balance;
@@ -24,13 +21,7 @@ public class Account {
         balance = amount;
     }
 
-    public void setCurrency(String currency){
-        this.currency = currency;
-    }
-
-
     public String showBalance() {
-        return "Stan konta "+nameAccount+" wynosi =" + balance + currency;
+        return "Stan konta "+accountName+" wynosi =" + balance + currency;
     }
-
 }

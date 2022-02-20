@@ -10,10 +10,9 @@ public class MainBank {
         Client client2 = new Client();
         bank1.newClient(client1);
         bank1.newClient(client2);
-        bank1.deleteClient(client2);
 
-
-
-
+        Account account1 = new Account("walutowe", "euro", 5000);
+        client1.openAccount(account1);
+        client1.deleteAccount(account1);
     }
 }

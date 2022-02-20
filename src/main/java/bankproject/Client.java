@@ -20,10 +20,8 @@ public class Client {
     }
 
 
-    public List<Account> openAccount(String nameAccount, String curency, double balance) {
-        Account account = new Account(nameAccount, curency, balance);
+    public void openAccount(Account account) {
         accountList.add(account);
-        return accountList;
     }
 
     public List<Account> getAccountList() {
@@ -48,17 +46,5 @@ public class Client {
         else{
             System.out.println("Nie masz tyle środków na koncie !!!");
         }
-    }
-
-    public void setClientId(int clientId) {
-        this.clientId = clientId;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 }
