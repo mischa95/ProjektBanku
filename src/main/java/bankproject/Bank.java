@@ -1,24 +1,25 @@
 package bankproject;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Bank {
     private int bankId;
-    private List<Client> clientList;
+    private List<Client> clientList = new ArrayList<>();
 
     public Bank() {
     }
 
-    public List<Client> newClient(int clientId, String firstName, String lastName) {
-        Client client = new Client();
-        client.setClientId(clientId);
-        client.setFirstName(firstName);
-        client.setLastName(lastName);
+    public void newClient(Client client) {
         clientList.add(client);
-        return clientList;
     }
 
     public void deleteClient(Client client){
         clientList.remove(client);
+    }
+
+    public List<Client> getClientList() {
+        return clientList;
     }
 }

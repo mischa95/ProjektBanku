@@ -1,21 +1,25 @@
 package bankproject;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Client {
     private int clientId;
     private String firstName;
     private String lastName;
-    private List<Account> accountList;
+    private List<Account> accountList = new ArrayList<>();
 
     public Client(){
     }
 
-    public Client(int clientId, List<Account> accountList) {
+    public Client(int clientId, String firstName, String lastName){
         this.clientId = clientId;
-        this.accountList = accountList;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        //this.accountList = accountList;
     }
+
 
     public List<Account> openAccount(int clientId, String firstName, String lastName) {
         Account account = new Account();
