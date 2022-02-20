@@ -4,13 +4,13 @@ package bankproject;
 public class Account {
     private String currency;
     private double balance;
+    private String accountName;
 
-    public Account() {
-    }
 
-    public Account(String currency, double balance) {
+    public Account(String accountName, String currency, double balance) {
         this.currency = currency;
         this.balance = balance;
+        this.accountName = accountName;
     }
 
 

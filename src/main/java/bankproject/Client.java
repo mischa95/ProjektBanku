@@ -13,16 +13,15 @@ public class Client {
     public Client(){
     }
 
-    public Client(int clientId, String firstName, String lastName){
-        this.clientId = clientId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        //this.accountList = accountList;
+    public Client(String firstName, String lastName, int clientId){
+        this.firstName=firstName;
+        this.lastName=lastName;
+        this.clientId=clientId;
     }
 
 
-    public List<Account> openAccount(int clientId, String firstName, String lastName) {
-        Account account = new Account();
+    public List<Account> openAccount(String nameAccount, String curency, double balance) {
+        Account account = new Account(nameAccount, curency, balance);
         accountList.add(account);
         return accountList;
     }
