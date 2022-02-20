@@ -21,7 +21,7 @@ public class Client {
     private String firstName;
     @Column(name = "CL_LAST_NAME")
     private String lastName;
-    @OneToMany(mappedBy = "account")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "account")
     private List<Account> accountList = new ArrayList<>();
 
     public void openAccount(Account account) {

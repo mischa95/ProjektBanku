@@ -28,7 +28,7 @@ public class Account {
     public Account(String accountType, String currency, BigDecimal balance) {
         this.currency = currency;
         this.balance = balance;
-        this.accountType = accountName;
+        this.accountType = accountType;
     }
 
     public BigDecimal getBalance(){
