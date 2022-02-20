@@ -1,25 +1,28 @@
 package bankproject;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.math.BigDecimal;
 
+@Entity
+@Data
+@NoArgsConstructor
 public class Client {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "CL_ID")
     private int clientId;
+    @Column(name = "CL_FIRST_NAME")
     private String firstName;
+    @Column(name = "CL_LAST_NAME")
     private String lastName;
+    @OneToMany(mappedBy = "account")
     private List<Account> accountList = new ArrayList<>();
-
-    public Client(){
-    }
-
-    public Client(String firstName, String lastName, int clientId){
-        this.firstName=firstName;
-        this.lastName=lastName;
-        this.clientId=clientId;
-    }
-
 
     public void openAccount(Account account) {
         accountList.add(account);
