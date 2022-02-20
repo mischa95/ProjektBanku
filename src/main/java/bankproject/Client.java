@@ -21,9 +21,12 @@ public class Client {
     private String firstName;
     @Column(name = "CL_LAST_NAME")
     private String lastName;
-    @OneToMany(mappedBy = "account")
-    private List<Account> accountList = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    //adnotacja dodaje kolumne z id klienta posiadajacego dane konto
+    @JoinColumn(name = "CL_ACC_ID", referencedColumnName = "ACC_ID")
+    private Account account;
 
+    /*
     public void openAccount(Account account) {
         accountList.add(account);
     }
@@ -51,4 +54,6 @@ public class Client {
             System.out.println("Nie masz tyle środków na koncie !!!");
         }
     }
+
+     */
 }
