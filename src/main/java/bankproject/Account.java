@@ -5,14 +5,14 @@ public class Account {
     private String nameAccount;
     private String currency;
     private double balance;
+    private String accountName;
 
-    //public Account() {
-    //}
 
     public Account(String nameAccount, String currency, double balance) {
         this.currency = currency;
         this.balance = balance;
         this.nameAccount=nameAccount;
+
     }
 
 
