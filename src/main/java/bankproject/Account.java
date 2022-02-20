@@ -1,23 +1,25 @@
 package bankproject;
 
 
+import java.math.BigDecimal;
+
 public class Account {
     private String accountName;
     private String currency;
-    private double balance;
+    private BigDecimal balance;
 
 
-    public Account(String accountName, String currency, double balance) {
+    public Account(String accountName, String currency, BigDecimal balance) {
         this.currency = currency;
-        this.balance = balance;
+        this.balance= balance;
         this.accountName = accountName;
     }
 
-    public double getBalance(){
+    public BigDecimal getBalance(){
         return balance;
     }
 
-    public void setBalance(double amount) {
+    public void setBalance(BigDecimal amount) {
         balance = amount;
     }
 

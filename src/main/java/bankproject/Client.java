@@ -1,6 +1,7 @@
 package bankproject;
 
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,17 +33,17 @@ public class Client {
         accountList.remove(account);
     }
 
-    public void payIntoAccount(Account account, double amount) {
-        if(amount>0)
-            account.setBalance(account.getBalance()+amount);
+    public void payIntoAccount(Account account, BigDecimal amount) {
+        if(amount.intValue()>0)
+            account.setBalance(account.getBalance().add(amount));
         else{
             System.out.println("Nie możesz wpłacić ujemnej kwoty !!!");
         }
     }
 
-    public void withdraw(Account account, double amount) {
-        if((account.getBalance()-amount) >= 0)
-            account.setBalance(account.getBalance()-amount);
+    public void withdraw(Account account, BigDecimal amount) {
+        if((account.getBalance().subtract(amount)).intValue() >= 0)
+            account.setBalance(account.getBalance().subtract(amount));
         else{
             System.out.println("Nie masz tyle środków na koncie !!!");
         }
