@@ -4,9 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.math.BigDecimal;
 
 @Entity
 @Data
@@ -21,10 +19,11 @@ public class Client {
     private String firstName;
     @Column(name = "CL_LAST_NAME")
     private String lastName;
+    @OneToMany(mappedBy = "client")
+    List<Account> account;
     @ManyToOne(fetch = FetchType.LAZY)
-    //adnotacja dodaje kolumne z id klienta posiadajacego dane konto
-    @JoinColumn(name = "CL_ACC_ID", referencedColumnName = "ACC_ID")
-    private Account account;
+    @JoinColumn(name = "CL_BNK_ID", referencedColumnName = "BNK_ID")
+    private Bank bank;
 
     /*
     public void openAccount(Account account) {

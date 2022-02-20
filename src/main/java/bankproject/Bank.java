@@ -4,8 +4,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
+
 
 @Entity
 @Data
@@ -16,10 +16,8 @@ public class Bank {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BNK_ID")
     private int bankId;
-    @ManyToOne(fetch = FetchType.LAZY)
-    //adnotacja dodaje kolumne z id klienta posiadajacego dane konto
-    @JoinColumn(name = "ACC_CL_ID", referencedColumnName = "CL_ID")
-    private Client client;
+    @OneToMany(mappedBy = "bank")
+    List<Client> client;
 
 /*
     public void newClient(Client client) {
