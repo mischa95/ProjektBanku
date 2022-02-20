@@ -1,5 +1,6 @@
 package bankproject;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class MainBank {
@@ -11,7 +12,7 @@ public class MainBank {
         bank1.newClient(client1);
         bank1.newClient(client2);
 
-        Account account1 = new Account("walutowe", "euro", 5000);
+        Account account1 = new Account("walutowe", "euro", BigDecimal.valueOf(500.5));
         client1.openAccount(account1);
         System.out.println(account1.showBalance());
     }

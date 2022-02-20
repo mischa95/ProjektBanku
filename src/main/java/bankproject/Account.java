@@ -2,7 +2,7 @@ package bankproject;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import java.math.BigDecimal;
 import javax.persistence.*;
 
 @Entity
@@ -17,7 +17,7 @@ public class Account {
     @Column(name = "ACC_TYPE")
     private String accountType;
     @Column(name = "ACC_BALANCE")
-    private double balance;
+    private BigDecimal balance;
     @Column(name = "ACC_CURRANCY")
     private String currency;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -25,17 +25,17 @@ public class Account {
     private Client client;
 
 
-    public Account(String accountName, String currency, double balance) {
+    public Account(String accountType, String currency, BigDecimal balance) {
         this.currency = currency;
         this.balance = balance;
         this.accountType = accountName;
     }
 
-    public double getBalance(){
+    public BigDecimal getBalance(){
         return balance;
     }
 
-    public void setBalance(double amount) {
+    public void setBalance(BigDecimal amount) {
         balance = amount;
     }
 
