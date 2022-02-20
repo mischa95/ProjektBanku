@@ -16,10 +16,12 @@ public class Bank {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BNK_ID")
     private int bankId;
-    @OneToMany(mappedBy = "client")
-    private List<Client> clientList = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    //adnotacja dodaje kolumne z id klienta posiadajacego dane konto
+    @JoinColumn(name = "ACC_CL_ID", referencedColumnName = "CL_ID")
+    private Client client;
 
-
+/*
     public void newClient(Client client) {
         clientList.add(client);
     }
@@ -31,4 +33,6 @@ public class Bank {
     public List<Client> getClientList() {
         return clientList;
     }
+
+ */
 }

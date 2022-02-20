@@ -31,7 +31,7 @@ public class Account {
     @JoinColumn(name = "ACC_CL_ID", referencedColumnName = "CL_ID")
     private Client client;
 
-
+/*
     public Account(String accountType, String currency, BigDecimal balance) {
         this.currency = currency;
         this.balance = balance;
@@ -49,4 +49,6 @@ public class Account {
     public String showBalance() {
         return "Stan konta "+accountType+" wynosi =" + balance + currency;
     }
+
+ */
 }
