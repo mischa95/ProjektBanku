@@ -13,6 +13,6 @@ public class MainBank {
 
         Account account1 = new Account("walutowe", "euro", 5000);
         client1.openAccount(account1);
-        client1.deleteAccount(account1);
+        System.out.println(account1.showBalance());
     }
 }
