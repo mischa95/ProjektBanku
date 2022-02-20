@@ -26,6 +26,10 @@ public class Client {
         return accountList;
     }
 
+    public List<Account> getAccountList() {
+        return accountList;
+    }
+
     public void deleteAccount(Account account) {
         accountList.remove(account);
     }
