@@ -21,10 +21,9 @@ public class Client {
     private String firstName;
     @Column(name = "CL_LAST_NAME")
     private String lastName;
-    @ManyToOne(fetch = FetchType.LAZY)
-    //adnotacja dodaje kolumne z id klienta posiadajacego dane konto
-    @JoinColumn(name = "CL_ACC_ID", referencedColumnName = "ACC_ID")
-    private Account account;
+
+
+    private List<Account> accountList;
 
     /*
     public void openAccount(Account account) {

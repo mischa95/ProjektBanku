@@ -25,7 +25,7 @@ public class Account {
     private BigDecimal balance;
     @Column(name = "ACC_CURRANCY")
     private String currency;
-    //
+
     @ManyToOne(fetch = FetchType.LAZY)
     //adnotacja dodaje kolumne z id klienta posiadajacego dane konto
     @JoinColumn(name = "ACC_CL_ID", referencedColumnName = "CL_ID")
