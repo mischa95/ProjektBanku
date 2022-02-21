@@ -14,6 +14,15 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
 
     @Override
     public void openAccount(Object o) {
+    }
+
+    @Override
+    public void deleteAccount(Object o) {
+
+    }
+
+    @Override
+    public void newClient(Object o) {
         Session session = openSession();
         session.beginTransaction();
         session.persist(o);
@@ -22,32 +31,22 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
     }
 
     @Override
-    public void deleteAccount(T t) {
+    public void removeClient(Object o) {
 
     }
 
     @Override
-    public void newClient(T t) {
+    public void payIntoAccount(Object o, BigDecimal amount) {
 
     }
 
     @Override
-    public void removeClient(T t) {
+    public void withdrawFromAccount(Object o, BigDecimal amount) {
 
     }
 
     @Override
-    public void payIntoAccount(T t, BigDecimal amount) {
-
-    }
-
-    @Override
-    public void withdrawFromAccount(T t, BigDecimal amount) {
-
-    }
-
-    @Override
-    public String showBalance(T t) {
+    public String showBalance(Object o) {
         return null;
     }
 
