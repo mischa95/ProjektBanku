@@ -1,5 +1,7 @@
 package bankproject;
 
+import bankproject.dao.GenericDao;
+import bankproject.dao.GenericDaoImpl;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -9,7 +11,10 @@ import java.util.List;
 
 public class MainBank {
     public static void main(String[] args) {
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-        Session session = sessionFactory.openSession();
+        GenericDao<Client> clientDao = new GenericDaoImpl<>(Client.class);
+        Client client = new Client();
+        client.setFirstName("Marcin");
+        client.setLastName("Najman");
+        clientDao.openAccount(client);
     }
 }
