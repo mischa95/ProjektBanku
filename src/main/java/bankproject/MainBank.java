@@ -15,6 +15,6 @@ public class MainBank {
         Client client = new Client();
         client.setFirstName("Marcin");
         client.setLastName("Najman");
-        clientDao.openAccount(client);
+        clientDao.newClient(client);
     }
 }
