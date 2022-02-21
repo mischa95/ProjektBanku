@@ -4,6 +4,7 @@ import bankproject.util.HibernateUtil;
 import org.hibernate.Session;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class GenericDaoImpl<T> implements GenericDao<T> {
     private Class<T> entityClass;
@@ -47,6 +48,16 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
 
     @Override
     public String showBalance(Object o) {
+        return null;
+    }
+
+    @Override
+    public List<T> getClientList() {
+        return null;
+    }
+
+    @Override
+    public List<T> getAccountList() {
         return null;
     }
 

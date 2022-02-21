@@ -20,14 +20,6 @@ public class Bank {
     List<Client> client;
 
 /*
-    public void newClient(Client client) {
-        clientList.add(client);
-    }
-
-    public void deleteClient(Client client){
-        clientList.remove(client);
-    }
-
     public List<Client> getClientList() {
         return clientList;
     }
