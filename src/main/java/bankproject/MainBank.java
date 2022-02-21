@@ -13,12 +13,15 @@ public class MainBank {
     public static void main(String[] args) {
         GenericDao<Client> clientDao = new GenericDaoImpl<>(Client.class);
         GenericDao<Account> accountDao = new GenericDaoImpl<>(Account.class);
-        GenericDao<Bank> bankDao = new GenericDaoImpl<>(Bank.class);
 
 
         Client client = new Client();
         client.setFirstName("Marcin");
         client.setLastName("Najman");
-        clientDao.newClient(client);
+        clientDao.openNew(client);
+
+        Account account = new Account();
+        account.setClient(client);
+        accountDao.openNew(account);
     }
 }

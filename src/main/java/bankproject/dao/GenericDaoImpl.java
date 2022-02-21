@@ -13,17 +13,9 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
         this.entityClass = entityClass;
     }
 
-    @Override
-    public void openAccount(Object o) {
-    }
 
     @Override
-    public void deleteAccount(Object o) {
-
-    }
-
-    @Override
-    public void newClient(Object o) {
+    public void openNew(Object o) {
         Session session = openSession();
         session.beginTransaction();
         session.persist(o);
@@ -32,34 +24,26 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
     }
 
     @Override
-    public void removeClient(Object o) {
+    public void delete(Object o) {
+        Session session = openSession();
+        session.beginTransaction();
+        session.delete(o);
+        session.getTransaction().commit();
+        session.close();
 
     }
+
+
 
     @Override
-    public void payIntoAccount(Object o, BigDecimal amount) {
-
+    public List<T> getAll() {
+        try (Session session = openSession()) {
+            return session.createQuery("from "+ entityClass.getName(),
+                            entityClass)
+                    .getResultList();
+        }
     }
 
-    @Override
-    public void withdrawFromAccount(Object o, BigDecimal amount) {
-
-    }
-
-    @Override
-    public String showBalance(Object o) {
-        return null;
-    }
-
-    @Override
-    public List<T> getClientList() {
-        return null;
-    }
-
-    @Override
-    public List<T> getAccountList() {
-        return null;
-    }
 
     private Session openSession(){
         return HibernateUtil.getSessionFactory().openSession();
