@@ -40,6 +40,7 @@ public class MainBank {
 
         System.out.println(clientService.showBalance(2));
 
-        System.out.println(clientService.getAllClients());
+        //System.out.println(clientService.getAllClients());
+        //System.out.println(clientService.getAccountsByClientId(1));
     }
 }

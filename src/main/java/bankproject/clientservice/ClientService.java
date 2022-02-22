@@ -1,19 +1,16 @@
 package bankproject.clientservice;
 
 import bankproject.Account;
-import bankproject.Bank;
 import bankproject.Client;
 import bankproject.util.HibernateUtil;
+import lombok.NoArgsConstructor;
 import org.hibernate.Session;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+@NoArgsConstructor
 public class ClientService{
-
-
-    public ClientService(){
-    }
 
     public void newClient(Client client) {
         Session session = openSession();
@@ -36,8 +33,7 @@ public class ClientService{
 
     public List<Client> getAllClients(){
         try (Session session = openSession()) {
-            return session.createQuery("from "+ Client.class.getName(),
-                            Client.class)
+            return session.createQuery("from "+ Client.class.getName(), Client.class)
                     .getResultList();
         }
     }
@@ -50,7 +46,6 @@ public class ClientService{
         session.close();
     }
 
-
     public void closeAccount(int id){
         Session session = openSession();
         Account a = session.find(Account.class, id);
@@ -61,11 +56,15 @@ public class ClientService{
             session.close();
         }
     }
-/*
+
     public List<Account> getAccountsByClientId(int id){
-        return;
+        try (Session session = openSession()) {
+            return session.createQuery("from " + Account.class.getName() + "where id =: id",
+                            Account.class)
+                    .getResultList();
+        }
     }
-*/
+
     public void payIntoAccount(int id, BigDecimal amount){
         Session session = openSession();
         session.beginTransaction();
