@@ -31,6 +31,20 @@ public class MainBank {
         account2.setCurrency("PLN");
         clientService.openAccount(account2);
 
+        Account account3 = new Account();
+        account3.setClient(client);
+        account3.setAccountType("oszczednosciowe");
+        account3.setBalance(BigDecimal.valueOf(10.000));
+        account3.setCurrency("PLN");
+        clientService.openAccount(account3);
+
+        Account account4 = new Account();
+        account4.setClient(clientService.findClientById(1));
+        account4.setAccountType("vat");
+        account4.setBalance(BigDecimal.valueOf(53000));
+        account4.setCurrency("PLN");
+        clientService.openAccount(account4);
+
         //clientService.closeAccount(1);
         //clientService.closeAccount(2);
         //clientService.deleteClient(1);
@@ -41,6 +55,6 @@ public class MainBank {
         System.out.println(clientService.showBalance(2));
 
         //System.out.println(clientService.getAllClients());
-        //System.out.println(clientService.getAccountsByClientId(1));
+        System.out.println(clientService.getAccountsByClientId(1));
     }
 }

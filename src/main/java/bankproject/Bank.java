@@ -15,6 +15,6 @@ public class Bank {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BNK_ID")
     private int bankId;
-    @OneToMany(mappedBy = "bank")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "bank")
     List<Client> client;
 }

@@ -19,7 +19,7 @@ public class Client {
     private String firstName;
     @Column(name = "CL_LAST_NAME")
     private String lastName;
-    @OneToMany(mappedBy = "client")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "client")
     List<Account> account;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "CL_BNK_ID", referencedColumnName = "BNK_ID")
