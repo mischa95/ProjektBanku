@@ -59,7 +59,7 @@ public class ClientService{
 
     public List<Account> getAccountsByClientId(int id){
         try (Session session = openSession()) {
-            return session.createQuery("from " + Account.class.getName() + "where acc_id =" + id ,
+            return session.createQuery("from " + Account.class.getName() + "where id =: id",
                             Account.class)
                     .getResultList();
         }
