@@ -39,5 +39,7 @@ public class MainBank {
         clientService.withdrawFromAccount(1,BigDecimal.valueOf(1000));
 
         System.out.println(clientService.showBalance(2));
+
+        System.out.println(clientService.getAllClients());
     }
 }
