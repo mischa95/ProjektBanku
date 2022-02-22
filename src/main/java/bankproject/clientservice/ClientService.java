@@ -1,6 +1,7 @@
 package bankproject.clientservice;
 
 import bankproject.Account;
+import bankproject.Bank;
 import bankproject.Client;
 import bankproject.util.HibernateUtil;
 import org.hibernate.Session;
@@ -33,7 +34,7 @@ public class ClientService{
         }
     }
 
-    public List<Client> getAll() {
+    public List<Client> getAllClients(){
         try (Session session = openSession()) {
             return session.createQuery("from "+ Client.class.getName(),
                             Client.class)
@@ -60,7 +61,11 @@ public class ClientService{
             session.close();
         }
     }
-
+/*
+    public List<Account> getAccountsByClientId(int id){
+        return;
+    }
+*/
     public void payIntoAccount(int id, BigDecimal amount){
         Session session = openSession();
         session.beginTransaction();
@@ -95,7 +100,6 @@ public class ClientService{
         session.close();
         return "Konto nie istnieje";
     }
-
 
     private static Session openSession(){
         return HibernateUtil.getSessionFactory().openSession();
