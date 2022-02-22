@@ -1,27 +1,43 @@
 package bankproject;
 
-import bankproject.dao.GenericDao;
-import bankproject.dao.GenericDaoImpl;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-
+import bankproject.clientservice.ClientService;
 import java.math.BigDecimal;
-import java.util.List;
 
 public class MainBank {
     public static void main(String[] args) {
-        GenericDao<Client> clientDao = new GenericDaoImpl<>(Client.class);
-        GenericDao<Account> accountDao = new GenericDaoImpl<>(Account.class);
-
+        ClientService clientService = new ClientService();
 
         Client client = new Client();
         client.setFirstName("Marcin");
         client.setLastName("Najman");
-        clientDao.openNew(client);
+        clientService.newClient(client);
 
-        Account account = new Account();
-        account.setClient(client);
-        accountDao.openNew(account);
+        Client client2 = new Client();
+        client2.setFirstName("Michal");
+        client2.setLastName("Tyrala");
+        clientService.newClient(client2);
+
+        Account account1 = new Account();
+        account1.setClient(client);
+        account1.setAccountType("walutowe");
+        account1.setBalance(BigDecimal.valueOf(5000));
+        account1.setCurrency("$");
+        clientService.openAccount(account1);
+
+        Account account2 = new Account();
+        account2.setClient(client);
+        account2.setAccountType("oszczednosciowe");
+        account2.setBalance(BigDecimal.valueOf(10.000));
+        account2.setCurrency("PLN");
+        clientService.openAccount(account2);
+
+        //clientService.closeAccount(1);
+        //clientService.closeAccount(2);
+        //clientService.deleteClient(1);
+
+        clientService.payIntoAccount(2,BigDecimal.valueOf(20));
+        clientService.withdrawFromAccount(1,BigDecimal.valueOf(1000));
+
+        System.out.println(clientService.showBalance(2));
     }
 }

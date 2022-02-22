@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
-
 @Entity
 @Data
 @NoArgsConstructor
@@ -18,11 +17,4 @@ public class Bank {
     private int bankId;
     @OneToMany(mappedBy = "bank")
     List<Client> client;
-
-/*
-    public List<Client> getClientList() {
-        return clientList;
-    }
-
- */
 }
