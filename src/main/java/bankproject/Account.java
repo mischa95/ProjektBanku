@@ -1,7 +1,10 @@
 package bankproject;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import java.math.BigDecimal;
 import javax.persistence.*;
 
@@ -20,6 +23,8 @@ public class Account {
     private BigDecimal balance;
     @Column(name = "ACC_CURRANCY")
     private String currency;
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ACC_CL_ID", referencedColumnName = "CL_ID")
     private Client client;

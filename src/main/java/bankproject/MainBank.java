@@ -1,11 +1,14 @@
 package bankproject;
 
 import bankproject.clientservice.ClientService;
+import org.hibernate.Session;
+
 import java.math.BigDecimal;
 
 public class MainBank {
     public static void main(String[] args) {
         ClientService clientService = new ClientService();
+        clientService.createBank();
 
         Client client = new Client();
         client.setFirstName("Marcin");
@@ -54,7 +57,7 @@ public class MainBank {
 
         System.out.println(clientService.showBalance(2));
 
-        //System.out.println(clientService.getAllClients());
+        System.out.println(clientService.getAllClients());
         System.out.println(clientService.getAccountsByClientId(1));
     }
 }
