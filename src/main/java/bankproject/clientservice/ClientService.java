@@ -1,6 +1,7 @@
 package bankproject.clientservice;
 
 import bankproject.Account;
+import bankproject.Bank;
 import bankproject.Client;
 import bankproject.util.HibernateUtil;
 import lombok.NoArgsConstructor;
@@ -12,6 +13,17 @@ import java.util.List;
 
 @NoArgsConstructor
 public class ClientService{
+
+    public void createBank() {
+        Session session = openSession();
+        session.beginTransaction();
+        Bank bank = new Bank();
+        bank.setName("SolarisBank");
+        bank.setAddress("Warszawa, Kmietowicza 16");
+        session.persist(bank);
+        session.getTransaction().commit();
+        session.close();
+    }
 
     public void newClient(Client client) {
         Session session = openSession();
@@ -33,10 +45,13 @@ public class ClientService{
     }
 
     public List<Client> getAllClients(){
-        try (Session session = openSession()) {
-            return session.createQuery("select * from "+ Client.class.getName(), Client.class)
-                    .getResultList();
-        }
+        Session session = openSession();
+        var query = session.createQuery(
+                        "select c from Client c",
+                        Client.class);
+        List<Client> clientList = query.getResultList();
+        session.close();
+        return clientList;
     }
 
     public void openAccount(Account account) {
@@ -60,13 +75,11 @@ public class ClientService{
 
     public List<Account> getAccountsByClientId(int id){
         Session session = openSession();
-
-        Query query = session.createQuery(
+        var query = session.createQuery(
                 "select a from Account a "+
                         "where acc_cl_id = :id",
-                Account.class
-
-        ).setParameter("id", id);
+                Account.class)
+                .setParameter("id", id);
 
         List<Account> accountList = query.getResultList();
         session.close();
@@ -115,7 +128,7 @@ public class ClientService{
         return "Konto nie istnieje";
     }
 
-    private static Session openSession(){
+    public Session openSession(){
         return HibernateUtil.getSessionFactory().openSession();
     }
 }
