@@ -20,28 +20,7 @@ public class Account {
     private BigDecimal balance;
     @Column(name = "ACC_CURRANCY")
     private String currency;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ACC_CL_ID", referencedColumnName = "CL_ID")
     private Client client;
-
-/*
-    public Account(String accountType, String currency, BigDecimal balance) {
-        this.currency = currency;
-        this.balance = balance;
-        this.accountType = accountType;
-    }
-
-    public BigDecimal getBalance(){
-        return balance;
-    }
-
-    public void setBalance(BigDecimal amount) {
-        balance = amount;
-    }
-
-    public String showBalance() {
-        return "Stan konta "+accountType+" wynosi =" + balance + currency;
-    }
-
- */
 }
