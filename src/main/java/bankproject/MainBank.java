@@ -1,8 +1,6 @@
 package bankproject;
 
 import bankproject.clientservice.ClientService;
-import org.hibernate.Session;
-
 import java.math.BigDecimal;
 
 public class MainBank {
@@ -48,12 +46,15 @@ public class MainBank {
         account4.setCurrency("PLN");
         clientService.openAccount(account4);
 
-        //clientService.closeAccount(1);
         //clientService.closeAccount(2);
-        //clientService.deleteClient(1);
+        clientService.deleteClient(1);
+        clientService.withdrawFromAccount(1,BigDecimal.valueOf(4000));
+        clientService.closeAccount(1);
 
         clientService.payIntoAccount(2,BigDecimal.valueOf(20));
         clientService.withdrawFromAccount(1,BigDecimal.valueOf(1000));
+        clientService.closeAccount(1);
+
 
         System.out.println(clientService.showBalance(2));
 
