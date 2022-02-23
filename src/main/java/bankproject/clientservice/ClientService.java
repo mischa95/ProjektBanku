@@ -6,10 +6,11 @@ import bankproject.Client;
 import bankproject.util.HibernateUtil;
 import lombok.NoArgsConstructor;
 import org.hibernate.Session;
-import org.hibernate.query.Query;
+
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Objects;
 
 @NoArgsConstructor
 public class ClientService{
@@ -36,7 +37,7 @@ public class ClientService{
     public void deleteClient(int id) {
         Session session = openSession();
         Client c = session.find(Client.class, id);
-        if(c != null) {
+        if(c != null && c.getAccount() == null) {
             session.beginTransaction();
             session.delete(c);
             session.getTransaction().commit();
@@ -65,7 +66,7 @@ public class ClientService{
     public void closeAccount(int id){
         Session session = openSession();
         Account a = session.find(Account.class, id);
-        if(a != null) {
+        if(a != null && Objects.equals(a.getBalance().toString(), BigDecimal.valueOf(0.00) + "0")) {
             session.beginTransaction();
             session.delete(a);
             session.getTransaction().commit();
