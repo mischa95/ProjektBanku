@@ -94,6 +94,13 @@ public class ClientService{
         return client;
     }
 
+    public Account findAccountById(int id){
+        Session session = openSession();
+        Account account = session.find(Account.class, id);
+        session.close();
+        return account;
+    }
+
     public void payIntoAccount(int id, BigDecimal amount){
         Session session = openSession();
         session.beginTransaction();
