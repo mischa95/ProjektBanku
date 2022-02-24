@@ -2,8 +2,6 @@ package bankproject.clientservice;
 
 import bankproject.Account;
 import bankproject.Client;
-import bankproject.util.HibernateUtil;
-import org.hibernate.Session;
 import org.junit.jupiter.api.*;
 
 import java.math.BigDecimal;
